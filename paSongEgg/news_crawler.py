@@ -13,10 +13,11 @@ import time
 from datetime import datetime
 from tqdm import tqdm
 from textrank import TextRank
-import django 
+ 
 
 # 장고 연결
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', "summ.settings") 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'paSongEgg.settings') 
+import django
 django.setup()
 
 from summ.models import News_crawled

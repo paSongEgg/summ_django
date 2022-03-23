@@ -6,5 +6,6 @@ app_name='summ'
 urlpatterns = [
     # base_views.py
     path('',base_views.index, name='index'),
-    path('<int:question_id>', base_views.detail, name='detail'),
+    path('crawl',base_views.get_data),
+    path('<int:news>', base_views.detail, name='detail'),
 ]
