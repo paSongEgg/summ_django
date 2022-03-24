@@ -20,7 +20,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'paSongEgg.settings')
 import django
 django.setup()
 
-from summ.models import News_crawled
+from summ.models import News_crawled,News_keyword
  
 
 def set_chrome_driver() :
@@ -75,9 +75,28 @@ def to_Json(save_path, ranking_type, data_list) :
     j = json.dumps(data_dict, ensure_ascii=False, indent="\t") 
     with open(f"{save_path}.json", 'w', encoding="utf-8") as f:
         f.write(j)
-    News_crawled(j).save()
-    print("new item added!")
 
+def to_Database(data_list) :
+    data = {}
+    for idx in range (0, len(data_list[0])) :
+        data = {
+                'date' : data_list[0][idx], 
+                'press' : data_list[1][idx], 
+                'ranking' : data_list[2][idx], 
+                'views' : data_list[3][idx], 
+                'title' : data_list[4][idx], 
+                'link' : data_list[5][idx], 
+                'content' : data_list[6][idx], 
+            }
+    News_crawled(data).save()
+    key=News_crawled.object.latest('id')
+    for i in range(0,len(data_list[7])):
+        keyword_data={
+            'news_id':key,
+            'keyword':data_list[7][i],
+        }
+        News_keyword(keyword_data).save()    
+    print("new item added!")
 
 #########################
 # 언론사별 랭킹뉴스 검색 #
@@ -98,7 +117,7 @@ def get_rankingNews(save_path, target_date, ranking_type) :
 
     #to_Excel(save_path, ranking_type, data_list)
     #to_Json(save_path, ranking_type, data_list)
-
+    to_Database(data_list)
 
 def get_rankingNews_infos(crawl_date, ranking_type) :
     
