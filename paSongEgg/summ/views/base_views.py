@@ -30,4 +30,4 @@ def get_data(request):
     """
     크롤링
     """
-    news_crawler()
+    news_crawler.main(request)

@@ -3,12 +3,23 @@
 {% block content %} 
 
 <div class="container my-3">
+    <div class="container">
+        <form>
+            <label for="crawling_options">옵션</label>
+            <select id="crawling_options" name="options">
+                <option value="1" selected>랭킹 뉴스</option>
+                <option value="2">키워드 검색</option>
+            </select>
+            <button type="submit">GO</button>
+        </form>
+    </div>
     <table class="table">
         <thead>
             <tr class="thead-dark">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성일지</th>
+                <th>키워드</th>
             </tr>
         </thead>
         <tbody>

@@ -7,3 +7,4 @@ urlpatterns = [
     path('summ/',include('summ.urls')),
     path('', base_views.index, name='index'),
 ]
+

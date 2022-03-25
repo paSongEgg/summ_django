@@ -103,7 +103,7 @@ def to_Database(data_list) :
 #########################
 
 
-def get_rankingNews(save_path, target_date, ranking_type) :
+def get_rankingNews(target_date, ranking_type) :
 
     crawl_date = f"{target_date[:4]}.{target_date[4:6]}.{target_date[6:]}"
     
@@ -418,10 +418,14 @@ def get_kN_article_content(driver, link_list) :
     return content_list, keyword_list, num_list
 
 
-if __name__ == "__main__" :
+def Routine_job():
+    target_date = datetime.today()
+    ranking_type = 'popular'
+    get_rankingNews(target_date, ranking_type)
+    
 
-    print("1. 언론사별 랭킹뉴스\n2. 키워드 검색\n")
-    option = input("option (번호 입력) : ")
+def main(request):
+    option=request.GET.get("options","1")
     save_path = "./crawling_result"
 
     if option == "1" :
