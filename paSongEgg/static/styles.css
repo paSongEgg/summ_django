@@ -1,0 +1,201 @@
+/*nav_bar*/
+.common{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    @media screen and (max-width: 550px) {
+        flex-direction: column;
+    }
+}
+.homebox{
+    display: flex;
+    align-items:center;
+}
+.home{
+    display: flex;
+    align-items:center;
+    font-size: 30px;
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.logoImg{
+    display: flex;
+    align-items:center;
+}
+.menubox{
+    display: flex;
+    align-items:center;
+    @media screen and (max-width: 550px) {
+        flex-direction: column;
+        align-items:flex-end;
+        display: ${({menu}) => {
+           return menu === false ? 'none' : 'flex'
+        }};
+    }
+}
+.menu{
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+}
+.menuBar{
+    display: flex;
+    align-items:center;
+    font-size: 30px;
+    position: absolute;
+    right: 32px;
+    height: 97px;
+    @media screen and (min-width: 550px) {
+        display: none;    
+    }
+}
+
+
+/*Home.module.css*/
+.floating{
+    position: absolute;
+    top: 130px;
+    left: 15%;
+}
+
+.news_list{
+    position: absolute;
+    top: 240px;
+    left: 15%;
+}
+
+/*NewsList.module.css*/
+.table_head{
+    background-color: rgb(204, 226, 245);
+    color: rgb(98, 124, 150);
+}
+
+/*SearchBar.module.css*/
+.search_bar{
+    margin: 10px;
+}
+
+.search_box{
+    background: #eee;
+    padding:10px;
+    border-radius:5px;
+    border:0 none;
+    width:160px;
+    margin-right: 5px;
+}
+
+.search_btn{
+    background:#94c1df;
+    color:white;
+    font: 'trebuchet ms', trebuchet;
+    font-size:small;
+    padding:9px 18px;
+    border-radius:5px;
+    border:0 none;
+    font-weight:bold;
+}
+
+/*SectionNews.module.css*/
+.home_container{
+    position: relative;
+    background-color: white;
+    font-weight: 300px;
+    padding-top: 30px;
+    padding-left: 80px;
+    color: #adaeb9;
+    display: block;
+    color: inherit;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+}
+
+.theme{
+    position: absolute;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    top: 30px;
+    left: 15%;
+}
+
+.home_button_changeOption{
+    background-color:rgb(255, 240, 173);
+    color:rgb(139, 131, 94);
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    font-size: smaller;
+    left: 5%;
+    cursor:pointer;
+    border: none;
+	border-radius: 15px;
+    padding: 8px 16px;
+	text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.home_button_changeOption:hover{
+    background-color: rgb(253, 225, 100);
+    color:rgb(139, 131, 94);
+}
+
+.button_theme{
+    background-color:rgb(204, 226, 245);
+    color:rgb(98, 124, 150);
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    font-size: smaller;
+    left: 5%;
+    cursor:pointer;
+    border: none;
+	border-radius: 15px;
+    padding: 8px 16px;
+	text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.button_theme:hover{
+    background-color: rgb(140, 167, 218);
+    color:whitesmoke;
+}
+
+.floating{
+    position: absolute;
+    top: 90px;
+    left: 15%;
+}
+
+.news_list{
+    position: absolute;
+    top: 200px;
+    left: 15%;
+}
+
+/*Themed.module.css*/
+.themed_container{
+    position: relative;
+    background-color: white;
+    font-weight: 300px;
+    padding-top: 30px;
+    padding-left: 80px;
+    color: #adaeb9;
+    display: block;
+    color: inherit;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+}
+
+/*TodayNews.module.css*/
+.todaynews_container{
+    position: relative;
+    background-color: white;
+    font-weight: 300px;
+    padding-top: 30px;
+    padding-left: 80px;
+    color: #adaeb9;
+    display: block;
+    color: inherit;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+
+}
+
+.themed_newslists{
+
+}

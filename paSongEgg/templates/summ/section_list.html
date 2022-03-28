@@ -1,0 +1,90 @@
+{% extends 'base.html' %} 
+{% load summ_filter %}
+{% block content %} 
+
+<div class="home_container">
+    <div class="floating">
+        {%include "summ/floating.html"%}
+        {%include "summ/search_bar.html"%}
+    </div>
+    <div class="news_list">
+        <div class="news_table">
+            <table id="news_table">
+                <thead class="table_head">
+                    <tr>
+                        <th>No.</th>
+                        <th>날짜</th>
+                        <th>언론사</th>
+                        <th>조회수</th>
+                        <th>제목</th>
+                        <th>키워드</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%if news_list %} 
+                    {%for news in news_list%} 
+                    <tr>
+                        <td>
+                            <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
+                            {{ news_list.paginator.count|sub:news_list.start_index|sub:forloop.counter0|add:1 }}
+                        </td>
+                        <td>{{news.date}}</td>
+                        <td>{{news.press}}</td>
+                        <td>{{news.views}}</td>
+                        <td>
+                            <a href="{%url 'summ:detail' news.id%}">{{news.title}}</a>
+                        </td>
+                        <td>{{news.keywords}}</td>
+                        
+                    </tr>
+                    {%endfor%} 
+                    {%else%} 
+                    <tr>
+                        <td colspan="3">해당 기사가 없습니다.</td>
+                    </tr>
+                    {%endif%} 
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if news_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ news_list.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in news_list.paginator.page_range %}
+        {% if page_number >= news_list.number|add:-2 and page_number <= news_list.number|add:2 %}
+            {% if page_number == news_list.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if news_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ news_list.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+</div>
+
+{% endblock %} 

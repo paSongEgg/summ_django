@@ -1,11 +1,27 @@
 from django.contrib import admin
-from .models import News_crawled,News_keyword
+from .models import Section_crawled, Comment_crawled,Popular_crawled,Popular_keyword,Comment_keyword,Section_keyword
 
-class News_Admin(admin.ModelAdmin):
+class Section_Admin(admin.ModelAdmin):
     search_fields=['title']
 
-class News_keyword_Admin(admin.ModelAdmin):
+class Comment_Admin(admin.ModelAdmin):
+    search_fields=['title']
+
+class Popular_Admin(admin.ModelAdmin):
+    search_fields=['title']
+
+class Popular_keyword_Admin(admin.ModelAdmin):
     search_fields=['keyword']
 
-admin.site.register(News_crawled,News_Admin)
-admin.site.register(News_keyword,News_keyword_Admin)
+class Comment_keyword_Admin(admin.ModelAdmin):
+    search_fields=['keyword']
+
+class Section_keyword_Admin(admin.ModelAdmin):
+    search_fields=['keyword']
+
+admin.site.register(Section_crawled,Section_Admin)
+admin.site.register(Comment_crawled,Comment_Admin)
+admin.site.register(Popular_crawled,Popular_Admin)
+admin.site.register(Section_keyword,Section_Admin)
+admin.site.register(Comment_keyword,Comment_Admin)
+admin.site.register(Popular_keyword,Popular_Admin)
