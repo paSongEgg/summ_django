@@ -1,0 +1,9 @@
+<form method="get" oninput="news_num = number.valueAsNumber">
+    <label><input type="radio" name="sort" value="comment"/> 1. 많이 본&nbsp;&nbsp;&nbsp;</label>
+    <label><input type="radio" name="sort" value="ranking"/> 2. 랭킹</label>
+    <br><br>
+    <label for="num">뉴스 개수&nbsp;&nbsp;</label>
+    <input type="range" id="num" name="number" min="1" max="120" step="10"/>
+    <output for="num" name="news_num"></output>
+    <input type="submit" value="GO"></input>
+</form>

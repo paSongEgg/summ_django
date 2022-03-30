@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %} 
+
+<div class="home_container">
+    <div class="floating">
+        {%include "summ/floating.html"%}
+    </div>
+    <div class="news_list">
+        <div class="news_table">
+            <table id="news_table">
+                <thead class="table_head">
+                    <tr>
+                        <th>No.</th>
+                        <th>날짜</th>
+                        <th>언론사</th>
+                        <th>댓글수</th>
+                        <th>길이</th>
+                        <th>제목</th>
+                        <th>키워드</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%if news_list %} 
+                    {%for news in news_list%} 
+                    <tr>
+                        <td>
+                            <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
+                            {{forloop.counter}}
+                        </td>   
+                        <td>{{news.date}}</td>
+                        <td>{{news.press}}</td>
+                        <td>{{news.comment}}</td>
+                        <td>{{news.content|length}}</td>
+                        <td>
+                            <a href="{{news.link}}">{{news.title}}</a>
+                        </td>
+                        <td>{{news.keywords}}</td>
+                        
+                    </tr>
+                    {%endfor%} 
+                    {%else%} 
+                    <tr>
+                        <td colspan="3">해당 기사가 없습니다.</td>
+                    </tr>
+                    
+                    {%endif%} 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

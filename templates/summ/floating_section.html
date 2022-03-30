@@ -1,0 +1,20 @@
+<form method="get" oninput="news_num = number.valueAsNumber">
+    <div class="theme">
+        <a class="home_button_changeOption" href="/">통합</a>      
+        <label class="button_theme" for="섹션1"><input type="radio" name="theme" id="섹션1" value="정치">정치</label>
+        <label class="button_theme" for="섹션2"><input type="radio" name="theme" id="섹션2" value="경제">경제</label>
+        <label class="button_theme" for="섹션3"><input type="radio" name="theme" id="섹션3" value="사회">사회</label>
+        <label class="button_theme" for="섹션4"><input type="radio" name="theme" id="섹션4" value="생활">생활/문화</label>
+        <label class="button_theme" for="섹션5"><input type="radio" name="theme" id="섹션5" value="IT">IT/과학</label>
+        <label class="button_theme" for="섹션6"><input type="radio" name="theme" id="섹션6" value="세계">세계</label>    
+    </div>
+    <div class="floating">
+        <label><input type="radio" name="sort" value="views"/> 1. 많이 본&nbsp;&nbsp;&nbsp;</label>
+        <label><input type="radio" name="sort" value="ranking"/> 2. 랭킹</label>
+        <br><br>
+        <label for="num">뉴스 개수&nbsp;&nbsp;</label>
+        <input type="range" id="num" name="number" min="10" max="120" step="10"/>
+        <output for="num" name="news_num"></output>
+        <input type="submit" value="GO"></input>
+    </div>
+</form>
