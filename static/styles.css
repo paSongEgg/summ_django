@@ -55,6 +55,9 @@
 input[id="섹션1"]{
     display:none;
 }
+input[id="Go"]{
+    display:none;
+}
 input[id="섹션1"]:checked+label{
     background-color:rgb(255, 240, 173);
     color:rgb(139, 131, 94);
@@ -174,6 +177,7 @@ input[id="섹션6"]:checked+label{
     color: rgb(98, 124, 150);
 }
 
+
 /*SearchBar.module.css*/
 .search_bar{
     margin: 10px;
@@ -202,7 +206,6 @@ input[id="섹션6"]:checked+label{
 /*SectionNews.module.css*/
 .home_container{
     position: relative;
-    width:100%;
     background-color: white;
     font-weight: 300px;
     padding-top: 30px;
@@ -269,6 +272,11 @@ input[id="섹션6"]:checked+label{
 .news_list{
     position: absolute;
     top: 200px;
+    left: 15%;
+}
+.keywords_list{
+    position: relative;
+    top: 20px;
     left: 15%;
 }
 .news_table{

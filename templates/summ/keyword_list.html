@@ -1,11 +1,54 @@
 {% extends 'base.html' %}
 {% block content %} 
 <div class="home_container">
-    <div class="키워드">
+    {%include "summ/floating.html"%}
+    <div class="news_list" style="position: relative; left:10%;top:60px;width:80%">
         <h3>section</h3>
         <hr>
-        {%if sec_list %} 
-        {%for sec in sec_list%}
+        {%if politic_list %}
+        <h5>정치</h5>
+        <hr> 
+        {%for sec in politic_list%}
+        <span>{{sec.keyword}}</span> 
+        {%endfor%}
+        {%endif%}
+        <br><br>
+        {%if economy_list %}
+        <h5>경제</h5>
+        <hr>
+        {%for sec in economy_list%}
+        <span>{{sec.keyword}}</span> 
+        {%endfor%}
+        {%endif%} 
+        <br><br>
+        {%if society_list %}
+        <h5>사회</h5>
+        <hr>
+        {%for sec in society_list%}
+        <span>{{sec.keyword}}</span> 
+        {%endfor%}
+        {%endif%}
+        <br><br>
+        {%if life_list %}
+        <h5>생활/문화</h5>
+        <hr>
+        {%for sec in life_list%}
+        <span>{{sec.keyword}}</span> 
+        {%endfor%}
+        {%endif%} 
+        <br><br>
+        {%if science_list %}
+        <h5>IT/과학</h5>
+        <hr>
+        {%for sec in science_list%}
+        <span>{{sec.keyword}}</span> 
+        {%endfor%}
+        {%endif%}
+        <br><br>
+        {%if world_list %}
+        <h5>세계</h5>
+        <hr>  
+        {%for sec in world_list%}
         <span>{{sec.keyword}}</span> 
         {%endfor%}
         {%endif%}

@@ -2,9 +2,7 @@
 {% block content %} 
 
 <div class="home_container">
-    <div class="floating">
-        {%include "summ/floating.html"%}
-    </div>
+    {%include "summ/floating_section.html"%}
     <div class="news_list">
         <div class="news_table">
             <table id="news_table">
@@ -13,8 +11,8 @@
                         <th>No.</th>
                         <th>날짜</th>
                         <th>언론사</th>
-                        <th>댓글수</th>
-                        <th>길이</th>
+                        <th>조회수</th>
+                        <th>소요시간(분)</th>
                         <th>제목</th>
                         <th>키워드</th>
                     </tr>
@@ -29,8 +27,8 @@
                         </td>   
                         <td>{{news.date}}</td>
                         <td>{{news.press}}</td>
-                        <td>{{news.comment}}</td>
-                        <td>{{news.content|length}}</td>
+                        <td style="text-align: center;">{{news.views}}</td>
+                        <td style="text-align: center;">{{news.reading}}</td>
                         <td>
                             <a href="{{news.link}}">{{news.title}}</a>
                         </td>
