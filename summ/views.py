@@ -13,7 +13,7 @@ def index(request):
    #입력 파라미터
    sort=request.GET.get('sort','views')#페이지
    slice=int(request.GET.get('number','5'))
-   if slice==1:
+   if slice==0:
         return keyword(request)
    #조회
    if sort=='reading2':
@@ -43,7 +43,7 @@ def section(request):
     else:
        order='-'+sort
     slice=int(request.GET.get('number','5'))
-    if slice==1:
+    if slice==0:
         return keyword(request)
     elif slice==5:
         if theme=="IT":
@@ -74,7 +74,7 @@ def comment(request):
    #입력 파라미터
    sort=request.GET.get('sort','comment')#페이지
    slice=int(request.GET.get('number','100'))
-   if slice==1:
+   if slice==0:
         return keyword(request)
    #조회
    if sort=="views" :
