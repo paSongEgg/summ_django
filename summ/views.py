@@ -90,16 +90,16 @@ def comment(request):
 
 def keyword(request):
     #section
-    world_keyword_list=list(Section_keyword.objects.filter(section_name="세계").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
-    science_keyword_list=list(Section_keyword.objects.filter(section_name="IT").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
-    economy_keyword_list=list(Section_keyword.objects.filter(section_name="경제").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
-    politic_keyword_list=list(Section_keyword.objects.filter(section_name="정치").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
-    society_keyword_list=list(Section_keyword.objects.filter(section_name="사회").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
-    life_keyword_list=list(Section_keyword.objects.filter(section_name="생활").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    world_keyword_list=list(Section_keyword.objects.filter(section_name="세계").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    science_keyword_list=list(Section_keyword.objects.filter(section_name="IT").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    economy_keyword_list=list(Section_keyword.objects.filter(section_name="경제").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    politic_keyword_list=list(Section_keyword.objects.filter(section_name="정치").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    society_keyword_list=list(Section_keyword.objects.filter(section_name="사회").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    life_keyword_list=list(Section_keyword.objects.filter(section_name="생활").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
     #comment
-    com_keyword_list=list(Comment_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    com_keyword_list=list(Comment_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
     #popular
-    pop_keyword_list=list(Popular_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    pop_keyword_list=list(Popular_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
     context={
         'science_list':science_keyword_list,
         'economy_list':economy_keyword_list,

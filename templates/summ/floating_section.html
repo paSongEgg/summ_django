@@ -1,26 +1,10 @@
-<form method="get" oninput="news_num = number.valueAsNumber">
-    <div class="theme">
-        {%if request.path == "/"%}
-        <a class="home_button_changeOption" href="/sections">섹션</a>
-        {%else%}
-        <a class="home_button_changeOption" href="/">통합</a>    
-        <label class="button_theme" for="섹션1"><input type="radio" name="theme" id="섹션1" value="정치">정치</label>
-        <label class="button_theme" for="섹션2"><input type="radio" name="theme" id="섹션2" value="경제">경제</label>
-        <label class="button_theme" for="섹션3"><input type="radio" name="theme" id="섹션3" value="사회">사회</label>
-        <label class="button_theme" for="섹션4"><input type="radio" name="theme" id="섹션4" value="생활">생활/문화</label>
-        <label class="button_theme" for="섹션5"><input type="radio" name="theme" id="섹션5" value="IT">IT/과학</label>
-        <label class="button_theme" for="섹션6"><input type="radio" name="theme" id="섹션6" value="세계">세계</label>
-        {%endif%}      
-    </div>
-    <div class="floating">
-        <label><input type="radio" name="sort" value="views"/> 1. 많이 본&nbsp;</label>
-        <label><input type="radio" name="sort" value="ranking"/> 2. 랭킹&nbsp;</label>
-        <label><input type="radio" name="sort" value="reading"/> 3. 긴 글&nbsp;</label>
-        <label><input type="radio" name="sort" value="reading2"/> 4. 짧은 글</label>
-        <br><br>
-        <span>뉴스 개수&nbsp;&nbsp;</span>
-        <input type="number"name="number" max="5" min="0" value="5"><span>&nbsp&nbsp0:키워드~5:전체보기</span>
-        <output for="num" name="news_num"></output>
-        <input type="submit" value="GO"></input>
-    </div>
-</form>
+<div class="theme">
+    <div id="sectionButtons" class="button_container"></div>     
+</div>
+<div class="floating">
+    <div id="sortButtons" class="lod_button_container"></div>
+    <button type="button" value="ranking" class="sort_button">1. 중요도</button> 
+    <button type="button" value="views" class="sort_button">2. 조회수</button> 
+    <span>뉴스 개수&nbsp;&nbsp;</span>
+    <div id="lodButtons" class="lod_button_container"></div>
+</div>
