@@ -12,24 +12,23 @@ def index(request):
    """
    #입력 파라미터
    sort=request.GET.get('sort','views')#페이지
-   slice=int(request.GET.get('number','5'))
-   if slice==0:
-        return keyword(request)
+   slice=request.GET.get('number','전체')
+   if slice=='키워드':
+       return keyword(request)
    #조회
    if sort=='reading2':
        order='reading'
    else:
        order='-'+sort
-   #news_list=Popular_crawled.objects.order_by(order)[:slice]
-   news_list=slicing(slice,Popular_crawled,request,order)
+   news_list=slicing(slice,Popular_crawled,order)
    context={'news_list':news_list}
    return render(request,'summ/news_list.html',context)
 
-def slicing(val,data,request,order):
-    if val==5:
+def slicing(val,data,order):
+    if val=='전체':
         return data.objects.order_by(order)
     else:
-        newSlice=20*int(val)
+        newSlice=10*int(val)
         return data.objects.order_by(order)[:newSlice]
     
 
@@ -42,10 +41,10 @@ def section(request):
        order='reading'
     else:
        order='-'+sort
-    slice=int(request.GET.get('number','5'))
-    if slice==0:
+    slice=request.GET.get('number','전체')
+    if slice=='키워드':
         return keyword(request)
-    elif slice==5:
+    elif slice=='전체':
         if theme=="IT":
             news_list=list(Section_crawled.objects.filter(Q(section=theme)|Q(section="과학")).order_by(order).values())
         elif theme=="생활":
@@ -53,7 +52,7 @@ def section(request):
         else:
             news_list=Section_crawled.objects.filter(section=theme).order_by(order)
     else:
-        slice=slice*20
+        slice=slice*10
         if theme=="IT":
             news_list=list(Section_crawled.objects.filter(Q(section=theme)|Q(section="과학")).order_by(order)[:slice].values())
         elif theme=="생활":
@@ -73,8 +72,8 @@ def toDB(request):
 def comment(request):
    #입력 파라미터
    sort=request.GET.get('sort','comment')#페이지
-   slice=int(request.GET.get('number','100'))
-   if slice==0:
+   slice=request.GET.get('number','전체')
+   if slice=='키워드':
         return keyword(request)
    #조회
    if sort=="views" :
@@ -90,16 +89,16 @@ def comment(request):
 
 def keyword(request):
     #section
-    world_keyword_list=list(Section_keyword.objects.filter(section_name="세계").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
-    science_keyword_list=list(Section_keyword.objects.filter(section_name="IT").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
-    economy_keyword_list=list(Section_keyword.objects.filter(section_name="경제").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
-    politic_keyword_list=list(Section_keyword.objects.filter(section_name="정치").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
-    society_keyword_list=list(Section_keyword.objects.filter(section_name="사회").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
-    life_keyword_list=list(Section_keyword.objects.filter(section_name="생활").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    world_keyword_list=list(Section_keyword.objects.filter(section_name="세계").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    science_keyword_list=list(Section_keyword.objects.filter(section_name="IT").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    economy_keyword_list=list(Section_keyword.objects.filter(section_name="경제").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    politic_keyword_list=list(Section_keyword.objects.filter(section_name="정치").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    society_keyword_list=list(Section_keyword.objects.filter(section_name="사회").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
+    life_keyword_list=list(Section_keyword.objects.filter(section_name="생활").values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
     #comment
-    com_keyword_list=list(Comment_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    com_keyword_list=list(Comment_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
     #popular
-    pop_keyword_list=list(Popular_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())[:10]
+    pop_keyword_list=list(Popular_keyword.objects.values('keyword').annotate(keyword_count=Count('keyword')).order_by('-keyword_count').values())
     context={
         'science_list':science_keyword_list,
         'economy_list':economy_keyword_list,

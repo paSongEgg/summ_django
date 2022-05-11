@@ -1,10 +1,10 @@
 /*전역 변수*/
 var themes=['정치','경제','사회','생활','IT','세계'];
 var clickedButton=localStorage.getItem("clicked");
+var currentLODvalue='전체';
 window.onload=()=>{
     makeSectionButtons();
     makeLODbuttons();
-    addEvent();
 }
 /*페이지 이동 버튼 조정하는 함수*/
 function makeSectionButtons(){
@@ -72,23 +72,10 @@ function sendSectionValue(e){
 /*LOD 조정 버튼을 생성하는 함수*/
 
 function makeLODbuttons(){
+    let lodValues=['키워드','1','2','3','4','5','전체'];
     let container=document.getElementById("lodButtons");
-    let keywordButton=document.createElement('button');
-    keywordButton.addEventListener('click',(e)=>sendLodValue(e));
-    keywordButton.value='0';
-    keywordButton.className="button_theme";
-    keywordButton.innerText="키워드 보기";
-    keywordButton.type="button";
-    container.appendChild(keywordButton);
-    for(var i=1;i<6;i++){
-        let lodButton=document.createElement('button');
-        lodButton.addEventListener('click',(e)=>sendLodValue(e));
-        lodButton.value=i;
-        lodButton.className="button_theme";
-        lodButton.innerText=i;
-        lodButton.type="button";
-        container.appendChild(lodButton);
-    }
+    
+    
 }
 
 function sendLodValue(e){
