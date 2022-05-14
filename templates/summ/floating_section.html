@@ -1,10 +1,9 @@
-<div class="theme">
-    <div id="sectionButtons" class="button_container"></div>     
+<div class="section">
+    <div id="sectionButtons" class="button-container"></div>     
 </div>
 <div class="floating">
-    <div id="sortButtons" class="lod_button_container"></div>
-    <button type="button" value="ranking" class="sort_button">1. 중요도</button> 
-    <button type="button" value="views" class="sort_button">2. 조회수</button> 
-    <span>뉴스 개수&nbsp;&nbsp;</span>
-    <div id="lodButtons" class="lod_button_container"></div>
+    <div class="range-levels">
+        <span id="rangeValue" style="margin-right:0.4em;"></span>
+        <input id="viewRange" type="range" min="0" max="5" onChange="rangeChange(event)" value='3'/>
+    </div>
 </div>

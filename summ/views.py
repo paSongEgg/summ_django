@@ -12,23 +12,20 @@ def index(request):
    """
    #입력 파라미터
    sort=request.GET.get('sort','views')#페이지
-   slice=request.GET.get('number','전체')
-   if slice=='키워드':
+   slice=int(request.GET.get('number','5'))
+   if slice==0:
        return keyword(request)
    #조회
-   if sort=='reading2':
-       order='reading'
-   else:
-       order='-'+sort
+   order='-'+sort
    news_list=slicing(slice,Popular_crawled,order)
    context={'news_list':news_list}
    return render(request,'summ/news_list.html',context)
 
 def slicing(val,data,order):
-    if val=='전체':
+    if val==5:
         return data.objects.order_by(order)
     else:
-        newSlice=10*int(val)
+        newSlice=10*val
         return data.objects.order_by(order)[:newSlice]
     
 
@@ -37,14 +34,11 @@ def section(request):
     sort=request.GET.get('sort','views')#페이지
     theme=request.GET.get('theme','경제')
     print(theme)
-    if sort=='reading2':
-       order='reading'
-    else:
-       order='-'+sort
-    slice=request.GET.get('number','전체')
-    if slice=='키워드':
+    order='-'+sort
+    slice=int(request.GET.get('number','5'))
+    if slice==0:
         return keyword(request)
-    elif slice=='전체':
+    elif slice==5:
         if theme=="IT":
             news_list=list(Section_crawled.objects.filter(Q(section=theme)|Q(section="과학")).order_by(order).values())
         elif theme=="생활":
@@ -78,11 +72,7 @@ def comment(request):
    #조회
    if sort=="views" :
        sort='comment'
-       order='-'+sort
-   elif sort=='reading2':
-       order='reading'
-   else:
-       order='-'+sort
+   order='-'+sort
    news_list=slicing(slice,Comment_crawled,request,order)
    context={'news_list':news_list}
    return render(request,'summ/comment_list.html',context)

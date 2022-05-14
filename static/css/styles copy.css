@@ -61,13 +61,15 @@
 
 .news_list{
     position: relative;
-    width: 100%;
 }
 
 /*NewsList.module.css*/
 .table_head{
     background-color: rgb(204, 226, 245);
     color: rgb(98, 124, 150);
+}
+.table_click:hover{
+    background: cornflowerblue;
 }
 
 /*SearchBar.module.css*/
@@ -113,9 +115,6 @@
     justify-content: flex-start;
     flex-wrap: nowrap;
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-}
-
-.button_container{
 }
 
 .home_button_changeOption{
@@ -180,10 +179,10 @@
     top: 20px;
 }
 .news_table{
-    width:100%;
+    width:95vw;
 }
 
-/*Themed.module.css*/
+/*Themed*/
 .themed_container{
     position: relative;
     background-color: white;
@@ -196,7 +195,7 @@
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
 }
 
-/*TodayNews.module.css*/
+/*news list*/
 .todaynews_container{
     position: relative;
     background-color: white;
@@ -207,9 +206,5 @@
     display: block;
     color: inherit;
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-
-}
-
-.themed_newslists{
 
 }
