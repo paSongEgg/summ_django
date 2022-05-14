@@ -1,7 +1,7 @@
 /*nav_bar*/
 .common{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     margin: 20px;
     @media screen and (max-width: 550px) {
         flex-direction: column;
@@ -22,7 +22,9 @@
 }
 .logoImg{
     display: flex;
-    align-items:center;
+    align-items:left;
+    width: 50px;
+    height: 50px;
 }
 .menubox{
     display: flex;
@@ -51,130 +53,23 @@
         display: none;    
     }
 }
-/*section button*/
-input[id="섹션1"]{
-    display:none;
-}
-input[id="Go"]{
-    display:none;
-}
-input[id="섹션1"]:checked+label{
-    background-color:rgb(255, 240, 173);
-    color:rgb(139, 131, 94);
-    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-    font-size: smaller;
-    left: 5%;
-    cursor:pointer;
-    border: none;
-	border-radius: 15px;
-    padding: 8px 16px;
-	text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
-input[id="섹션2"]{
-    display:none;
-}
-input[id="섹션2"]:checked+label{
-    background-color:rgb(255, 240, 173);
-    color:rgb(139, 131, 94);
-    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-    font-size: smaller;
-    left: 5%;
-    cursor:pointer;
-    border: none;
-	border-radius: 15px;
-    padding: 8px 16px;
-	text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
-input[id="섹션3"]{
-    display:none;
-}
-input[id="섹션3"]:checked+label{
-    background-color:rgb(255, 240, 173);
-    color:rgb(139, 131, 94);
-    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-    font-size: smaller;
-    left: 5%;
-    cursor:pointer;
-    border: none;
-	border-radius: 15px;
-    padding: 8px 16px;
-	text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
-input[id="섹션4"]{
-    display:none;
-}
-input[id="섹션4"]:checked+label{
-    background-color:rgb(255, 240, 173);
-    color:rgb(139, 131, 94);
-    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-    font-size: smaller;
-    left: 5%;
-    cursor:pointer;
-    border: none;
-	border-radius: 15px;
-    padding: 8px 16px;
-	text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
-input[id="섹션5"]{
-    display:none;
-}
-input[id="섹션5"]:checked+label{
-    background-color:rgb(255, 240, 173);
-    color:rgb(139, 131, 94);
-    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-    font-size: smaller;
-    left: 5%;
-    cursor:pointer;
-    border: none;
-	border-radius: 15px;
-    padding: 8px 16px;
-	text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
-input[id="섹션6"]{
-    display:none;
-}
-input[id="섹션6"]:checked+label{
-    background-color:rgb(255, 240, 173);
-    color:rgb(139, 131, 94);
-    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-    font-size: smaller;
-    left: 5%;
-    cursor:pointer;
-    border: none;
-	border-radius: 15px;
-    padding: 8px 16px;
-	text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
 /*Home.module.css*/
 .floating{
-    position: absolute;
-    top: 130px;
-    left: 15%;
+    position: relative;
+    margin: 20px 0;
 }
 
 .news_list{
-    position: absolute;
-    width:100%;
-    top: 240px;
-    left: 15%;
+    position: relative;
 }
 
 /*NewsList.module.css*/
 .table_head{
     background-color: rgb(204, 226, 245);
     color: rgb(98, 124, 150);
+}
+.table_click:hover{
+    background: cornflowerblue;
 }
 
 /*SearchBar.module.css*/
@@ -205,21 +100,21 @@ input[id="섹션6"]:checked+label{
 /*SectionNews.module.css*/
 .home_container{
     position: relative;
-    background-color: white;
+    height: fit-content;
+    padding: 20px;
+    justify-content: flex-start;
     font-weight: 300px;
-    padding-top: 30px;
-    padding-left: 80px;
     color: #adaeb9;
     display: block;
     color: inherit;
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    margin: auto;
 }
 
 .theme{
-    position: absolute;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-    top: 30px;
-    left: 15%;
 }
 
 .home_button_changeOption{
@@ -235,6 +130,7 @@ input[id="섹션6"]:checked+label{
 	text-decoration: none;
     font-weight: 600;
     transition: 0.25s;
+    margin-right: 3px;
 }
 
 .home_button_changeOption:hover{
@@ -252,37 +148,41 @@ input[id="섹션6"]:checked+label{
     border: none;
 	border-radius: 15px;
     padding: 8px 16px;
+    margin-right: 3px;
 	text-decoration: none;
     font-weight: 600;
     transition: 0.25s;
 }
 
+.button_theme_clicked{
+    background-color: rgb(81, 120, 192);
+    color:whitesmoke;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    font-size: smaller;
+    left: 5%;
+    cursor:pointer;
+    border: none;
+	border-radius: 15px;
+    padding: 8px 16px;
+	text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
 .button_theme:hover{
     background-color: rgb(140, 167, 218);
     color:whitesmoke;
+    padding: 8px 18px;
 }
 
-.floating{
-    position: absolute;
-    top: 90px;
-    left: 15%;
-}
-
-.news_list{
-    position: absolute;
-    top: 200px;
-    left: 15%;
-}
 .keywords_list{
     position: relative;
     top: 20px;
-    left: 15%;
 }
 .news_table{
-    width:100%;
+    width:95vw;
 }
 
-/*Themed.module.css*/
+/*Themed*/
 .themed_container{
     position: relative;
     background-color: white;
@@ -295,7 +195,7 @@ input[id="섹션6"]:checked+label{
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
 }
 
-/*TodayNews.module.css*/
+/*news list*/
 .todaynews_container{
     position: relative;
     background-color: white;
@@ -306,9 +206,5 @@ input[id="섹션6"]:checked+label{
     display: block;
     color: inherit;
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
-
-}
-
-.themed_newslists{
 
 }

@@ -1,0 +1,154 @@
+body{
+    margin:2vw 4vw 7vw 4vw;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+}
+/*nav*/
+.header{
+    display: flex;
+    justify-content: flex-start;
+}
+.home-container{
+    display: flex;
+    align-items:center;
+}
+.logo-image{
+    display: flex;
+    align-items:left;
+    width: 50px;
+    height: 50px;
+}
+.home{
+    display: flex;
+    align-items:center;
+    font-size: 30px;
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+/*footer*/
+.footer{
+    height:8em;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    color: lightgrey;
+}
+/*main*/
+.main-container{
+    display:grid;
+    grid-template-rows: repeat(3,auto);
+}
+/*user-input*/
+.section{
+    margin:1.5em 0;
+}
+.button-container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.3em;
+}
+.home-button-change-option{
+    background-color:rgb(255, 240, 173);
+    color:rgb(139, 131, 94);
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    font-size: smaller;
+    left: 5%;
+    cursor:pointer;
+    border: none;
+	border-radius: 15px;
+    padding: 8px 16px;
+	text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    margin-right: 3px;
+}
+
+.home-button-change-option:hover{
+    background-color: rgb(253, 225, 100);
+    color:rgb(139, 131, 94);
+}
+
+.button-theme{
+    background-color:rgb(204, 226, 245);
+    color:rgb(98, 124, 150);
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    font-size: smaller;
+    left: 5%;
+    cursor:pointer;
+    border: none;
+	border-radius: 15px;
+    padding: 8px 16px;
+    margin-right: 3px;
+	text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.button-theme-clicked{
+    background-color: rgb(81, 120, 192);
+    color:whitesmoke;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    font-size: smaller;
+    left: 5%;
+    cursor:pointer;
+    border: none;
+	border-radius: 15px;
+    padding: 8px 16px;
+	text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+.button-theme:hover{
+    background-color: rgb(140, 167, 218);
+    color:whitesmoke;
+    padding: 8px 18px;
+}
+
+.range-levels{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5em;
+    margin:0 0 1.5em 0;
+}
+#viewRange{
+    width:20vw;
+}
+/*news-table*/
+.news-table-container{
+    width:92vw;
+    border-style: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+@media (max-width:767px) {
+    .news-table-container{
+        overflow:hidden;
+        width:92vw;
+        text-overflow:ellipsis;
+        border-style: none;
+        border-collapse: collapse;
+        text-align: center;
+    }
+}
+.news-table-click:hover{
+    color: #3676ec;
+}
+.news-table-container>tbody>tr{
+    height: 2em;
+}
+.news-table-container>tbody>tr>td{
+    padding:0 1em;
+}
+.table-head{
+    background-color: #FABC3D;
+    height:2.5em;
+}
+.news-table-align{
+    text-align: start;
+    padding-left: 3em;
+}
+#newsTitle:hover{
+    color:#fe9000;
+}
+
