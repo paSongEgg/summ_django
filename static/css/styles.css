@@ -144,6 +144,13 @@ body{
     background-color: #FABC3D;
     height:2.5em;
 }
+.section-table-head{
+    background-color: #648dda;
+    height:2.5em;
+}
+.section-news-table-click:hover{
+    color: #3676ec;
+}
 .news-table-align{
     text-align: start;
     padding-left: 3em;

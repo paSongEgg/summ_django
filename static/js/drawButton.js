@@ -9,7 +9,7 @@ const drawButton = () => {
       window.location.pathname === "/"
         ? `<button type='button' class=${buttonStyle[0]} id='mainButton' value='/sections'>주제별 뉴스</button>`
         : `<button type='button' class=${buttonStyle[0]} id='mainButton' value='/'>전체 뉴스</button>`;
-    return;
+    return mainButton;
   };
   const drawSectionButton = () => {
     let sectionButton = "";
@@ -28,12 +28,14 @@ const drawButton = () => {
 
   return {
     draw() {
+      console.log("draw");
       container.insertAdjacentHTML(
         "beforeend",
         drawMainButton() + drawSectionButton()
       );
     },
     set() {
+      console.log("set");
       let searchParams = new URLSearchParams(location.search);
       let viewRange = document.getElementById("viewRange");
       document.getElementById(searchParams.get("theme")).className =

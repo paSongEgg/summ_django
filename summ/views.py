@@ -12,7 +12,7 @@ def index(request):
    """
    #입력 파라미터
    sort=request.GET.get('sort','views')#페이지
-   slice=int(request.GET.get('number','5'))
+   slice=int(request.GET.get('number','3'))
    if slice==0:
        return keyword(request)
    #조회
@@ -35,7 +35,7 @@ def section(request):
     theme=request.GET.get('theme','경제')
     print(theme)
     order='-'+sort
-    slice=int(request.GET.get('number','5'))
+    slice=int(request.GET.get('number','3'))
     if slice==0:
         return keyword(request)
     elif slice==5:
