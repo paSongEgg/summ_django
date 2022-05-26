@@ -25,7 +25,7 @@ def slicing(val,data,order):
     if val==5:
         return data.objects.order_by(order)
     else:
-        newSlice=10*val
+        newSlice=5*val
         return data.objects.order_by(order)[:newSlice]
     
 
@@ -46,7 +46,7 @@ def section(request):
         else:
             news_list=Section_crawled.objects.filter(section=theme).order_by(order)
     else:
-        slice=slice*10
+        slice=slice*5
         if theme=="IT":
             news_list=list(Section_crawled.objects.filter(Q(section=theme)|Q(section="과학")).order_by(order)[:slice].values())
         elif theme=="생활":
