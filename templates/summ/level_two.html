@@ -5,13 +5,12 @@
     {%include "summ/floating_section.html"%}
     <div class="news-list">
         <table id="newsTable" class="news-table-container">
-            <thead class="section-table-head">
+            <thead class="table-head" style="text-align: center;">
                 <tr>
-                    <th class="news-table-click" onclick="orderDirect('date');">날짜</th>
-                    <th>섹션</th>
+                    <th class="news-table-click" value="date">날짜</th>
                     <th>언론사</th>
-                    <th class="news-table-click" onclick="orderDirect('views');">조회수</th>
-                    <th class="news-table-click" onclick="orderDirect('reading');">길이</th>
+                    <th class="news-table-click" value="comment">댓글수</th>
+                    <th class="news-table-click" value="reading">소요시간(분)</th>
                     <th>제목</th>
                     <th>키워드</th>
                 </tr>
@@ -20,15 +19,14 @@
                 {%if news_list %}
                 {%for news in news_list%}
                 <tr>
-                    <td>{{news.date|date:"y-m-d"}}</td>
-                    <td>{{news.section}}</td>
+                    <td>{{news.date|date:"y.m.d"}}</td>
                     <td>{{news.press}}</td>
-                    {%if news.views != 0 %} 
-                    <td id="newsView" value="{{news.views}}">
-                        {{news.views}}
+                    {%if news.comment != 0 %} 
+                    <td id="newsView" value="{{news.comment}}">
+                        {{news.comment}}
                     </td>
                     {% else %} 
-                    <td id="newsView" value="{{news.views}}">
+                    <td id="newsView" value="{{news.comment}}">
                         -
                     </td>
                     {%endif%}
@@ -36,15 +34,15 @@
                     <td class="news-table-align" id="newsTitle" onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
                         {{news.title}}
                     </td>
-                    <td>{{news.keywords}}</td>
-        
+                    <td class="news-table-align" >{{news.keywords}}</td>
+    
                 </tr>
                 {%endfor%}
                 {%else%}
                 <tr>
-                    <td colspan="3">해당 기사가 없습니다.</td>
+                    <td colspan="7">해당 기사가 없습니다.</td>
                 </tr>
-        
+    
                 {%endif%}
             </tbody>
         </table>

@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="main-container">
+    {%include "summ/floating_section.html"%}
+    <div class="news-list">
+        <div class="section-keyword">
+            <div>
+                <span class="section-name">정치</span>
+                {%for sec in politic_keyword_list%}
+                <span class="section-keywords">{{sec.keyword}}</span>
+                {%endfor%}
+            </div>
+        </div>
+        <table id="newsTable" class="section-table-container">
+            <thead class="section-table-head" style="text-align: center;">
+                <tr>
+                    <th class="news-table-click" value="date">날짜</th>
+                    <th>언론사</th>
+                    <th class="news-table-click" value="comment">댓글수</th>
+                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th>제목</th>
+                    <th>키워드</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%if politic_list %}
+                {%for news in politic_list%}
+                <tr>
+                    <td>{{news.date|date:"y.m.d"}}</td>
+                    <td>{{news.press}}</td>
+                    {%if news.comment != 0 %}
+                    <td id="newsView" value="{{news.comment}}">
+                        {{news.comment}}
+                    </td>
+                    {% else %}
+                    <td id="newsView" value="{{news.comment}}">
+                        -
+                    </td>
+                    {%endif%}
+                    <td>{{news.reading}}</td>
+                    <td class="news-table-align" id="newsTitle"
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
+                        {{news.title}}
+                    </td>
+                    <td class="news-table-align">{{news.keywords}}</td>
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">해당 기사가 없습니다.</td>
+                </tr>
+
+                {%endif%}
+            </tbody>
+        </table>
+        <div class="section-keyword">
+            <div>
+                <span class="section-name">경제</span>
+                {%for sec in economy_keyword_list%}
+                <span class="section-keywords">{{sec.keyword}}</span>
+                {%endfor%}
+            </div>
+        </div>
+        <table id="newsTable" class="section-table-container">
+            <thead class="section-table-head" style="text-align: center;">
+                <tr>
+                    <th class="news-table-click" value="date">날짜</th>
+                    <th>언론사</th>
+                    <th class="news-table-click" value="comment">댓글수</th>
+                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th>제목</th>
+                    <th>키워드</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%if economy_list %}
+                {%for news in economy_list%}
+                <tr>
+                    <td>{{news.date|date:"y.m.d"}}</td>
+                    <td>{{news.press}}</td>
+                    {%if news.comment != 0 %}
+                    <td id="newsView" value="{{news.comment}}">
+                        {{news.comment}}
+                    </td>
+                    {% else %}
+                    <td id="newsView" value="{{news.comment}}">
+                        -
+                    </td>
+                    {%endif%}
+                    <td>{{news.reading}}</td>
+                    <td class="news-table-align" id="newsTitle"
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
+                        {{news.title}}
+                    </td>
+                    <td class="news-table-align">{{news.keywords}}</td>
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">해당 기사가 없습니다.</td>
+                </tr>
+
+                {%endif%}
+            </tbody>
+        </table>
+        <div class="section-keyword">
+            <div>
+                <span class="section-name">사회</span>
+                {%for sec in society_keyword_list%}
+                <span class="section-keywords">{{sec.keyword}}</span>
+                {%endfor%}
+            </div>
+        </div>
+        <table id="newsTable" class="section-table-container">
+            <thead class="section-table-head" style="text-align: center;">
+                <tr>
+                    <th class="news-table-click" value="date">날짜</th>
+                    <th>언론사</th>
+                    <th class="news-table-click" value="comment">댓글수</th>
+                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th>제목</th>
+                    <th>키워드</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%if society_list %}
+                {%for news in society_list%}
+                <tr>
+                    <td>{{news.date|date:"y.m.d"}}</td>
+                    <td>{{news.press}}</td>
+                    {%if news.comment != 0 %}
+                    <td id="newsView" value="{{news.comment}}">
+                        {{news.comment}}
+                    </td>
+                    {% else %}
+                    <td id="newsView" value="{{news.comment}}">
+                        -
+                    </td>
+                    {%endif%}
+                    <td>{{news.reading}}</td>
+                    <td class="news-table-align" id="newsTitle"
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
+                        {{news.title}}
+                    </td>
+                    <td class="news-table-align">{{news.keywords}}</td>
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">해당 기사가 없습니다.</td>
+                </tr>
+
+                {%endif%}
+            </tbody>
+        </table>
+        <div class="section-keyword">
+            <div>
+                <span class="section-name">생활/문화</span>
+                {%for sec in life_keyword_list%}
+                <span class="section-keywords">{{sec.keyword}}</span>
+                {%endfor%}
+            </div>
+        </div>
+        <table id="newsTable" class="section-table-container">
+            <thead class="section-table-head" style="text-align: center;">
+                <tr>
+                    <th class="news-table-click" value="date">날짜</th>
+                    <th>언론사</th>
+                    <th class="news-table-click" value="comment">댓글수</th>
+                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th>제목</th>
+                    <th>키워드</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%if life_list %}
+                {%for news in life_list%}
+                <tr>
+                    <td>{{news.date|date:"y.m.d"}}</td>
+                    <td>{{news.press}}</td>
+                    {%if news.comment != 0 %}
+                    <td id="newsView" value="{{news.comment}}">
+                        {{news.comment}}
+                    </td>
+                    {% else %}
+                    <td id="newsView" value="{{news.comment}}">
+                        -
+                    </td>
+                    {%endif%}
+                    <td>{{news.reading}}</td>
+                    <td class="news-table-align" id="newsTitle"
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
+                        {{news.title}}
+                    </td>
+                    <td class="news-table-align">{{news.keywords}}</td>
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">해당 기사가 없습니다.</td>
+                </tr>
+
+                {%endif%}
+            </tbody>
+        </table>
+        <div class="section-keyword">
+            <div>
+                <span class="section-name">IT/과학</span>
+                {%for sec in science_keyword_list%}
+                <span class="section-keywords">{{sec.keyword}}</span>
+                {%endfor%}
+            </div>
+        </div>
+        <table id="newsTable" class="section-table-container">
+            <thead class="section-table-head" style="text-align: center;">
+                <tr>
+                    <th class="news-table-click" value="date">날짜</th>
+                    <th>언론사</th>
+                    <th class="news-table-click" value="comment">댓글수</th>
+                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th>제목</th>
+                    <th>키워드</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%if science_list %}
+                {%for news in science_list%}
+                <tr>
+                    <td>{{news.date|date:"y.m.d"}}</td>
+                    <td>{{news.press}}</td>
+                    {%if news.comment != 0 %}
+                    <td id="newsView" value="{{news.comment}}">
+                        {{news.comment}}
+                    </td>
+                    {% else %}
+                    <td id="newsView" value="{{news.comment}}">
+                        -
+                    </td>
+                    {%endif%}
+                    <td>{{news.reading}}</td>
+                    <td class="news-table-align" id="newsTitle"
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
+                        {{news.title}}
+                    </td>
+                    <td class="news-table-align">{{news.keywords}}</td>
+
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">해당 기사가 없습니다.</td>
+                </tr>
+
+                {%endif%}
+            </tbody>
+        </table>
+        <div class="section-keyword">
+            <div>
+                <span class="section-name">세계</span>
+                {%for sec in world_keyword_list%}
+                <span class="section-keywords">{{sec.keyword}}</span>
+                {%endfor%}
+            </div>
+        </div>
+        <table id="newsTable" class="section-table-container">
+            <thead class="section-table-head" style="text-align: center;">
+                <tr>
+                    <th class="news-table-click" value="date">날짜</th>
+                    <th>언론사</th>
+                    <th class="news-table-click" value="comment">댓글수</th>
+                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th>제목</th>
+                    <th>키워드</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%if world_list %}
+                {%for news in world_list%}
+                <tr>
+                    <td>{{news.date|date:"y.m.d"}}</td>
+                    <td>{{news.press}}</td>
+                    {%if news.comment != 0 %}
+                    <td id="newsView" value="{{news.comment}}">
+                        {{news.comment}}
+                    </td>
+                    {% else %}
+                    <td id="newsView" value="{{news.comment}}">
+                        -
+                    </td>
+                    {%endif%}
+                    <td>{{news.reading}}</td>
+                    <td class="news-table-align" id="newsTitle"
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
+                        {{news.title}}
+                    </td>
+                    <td class="news-table-align">{{news.keywords}}</td>
+                </tr>
+                {%endfor%}
+                {%else%}
+                <tr>
+                    <td colspan="7">해당 기사가 없습니다.</td>
+                </tr>
+
+                {%endif%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

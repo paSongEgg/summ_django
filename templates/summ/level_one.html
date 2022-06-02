@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %} 
+<div class="home_container">
+    {%include "summ/floating_section.html"%}
+    <div class="keyword-list">
+        <div class="keyword-total">
+            <h3>통합</h3>
+            <div>
+            {%for sec in total_list%}
+            <span>{{sec.keyword}}</span> 
+            {%endfor%}
+            </div>
+        </div>
+        <div>
+            <h3>정치</h3>
+            <div>
+                {%for sec in total_list%}
+                <span>{{sec.keyword}}</span> 
+                {%endfor%}
+            </div>
+        </div>
+        <div>
+            <h3>경제</h3>
+            <div>
+                {%for sec in total_list%}
+                <span>{{sec.keyword}}</span> 
+                {%endfor%}
+            </div>
+        </div>
+        <div>
+            <h3>사회</h3>
+            <div>
+                {%for sec in total_list%}
+                <span>{{sec.keyword}}</span> 
+                {%endfor%}
+            </div>
+        </div>
+        <div>
+            <h3>생활/문화</h3>
+            <div>
+                {%for sec in total_list%}
+                <span>{{sec.keyword}}</span> 
+                {%endfor%}
+            </div>
+        </div>
+        <div>
+            <h3>IT/과학</h3>
+            <div>
+                {%for sec in total_list%}
+                <span>{{sec.keyword}}</span> 
+                {%endfor%}
+            </div>
+        </div>
+        <div>
+            <h3>세계</h3> 
+            <div>
+                {%for sec in total_list%}
+                <span>{{sec.keyword}}</span> 
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
