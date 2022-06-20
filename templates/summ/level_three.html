@@ -15,12 +15,11 @@
         <table id="newsTable" class="section-table-container">
             <thead class="section-table-head" style="text-align: center;">
                 <tr>
-                    <th class="news-table-click" value="date">날짜</th>
+                    <th value="date">날짜</th>
                     <th>언론사</th>
-                    <th class="news-table-click" value="comment">댓글수</th>
-                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th value="comment">댓글수</th>
+                    <th value="reading">소요시간(초)</th>
                     <th>제목</th>
-                    <th>키워드</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,10 +39,15 @@
                     {%endif%}
                     <td>{{news.reading}}</td>
                     <td class="news-table-align" id="newsTitle"
-                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
-                        {{news.title}}
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                        <div>
+                            {%for keyword in news.new_keywords%}
+                                <span class="news-keywords">#{{keyword}}</span>
+                            {%endfor%}
+                            </div>
+                            <div>{{news.title}}</div>
                     </td>
-                    <td class="news-table-align">{{news.keywords}}</td>
                 </tr>
                 {%endfor%}
                 {%else%}
@@ -65,12 +69,11 @@
         <table id="newsTable" class="section-table-container">
             <thead class="section-table-head" style="text-align: center;">
                 <tr>
-                    <th class="news-table-click" value="date">날짜</th>
+                    <th value="date">날짜</th>
                     <th>언론사</th>
-                    <th class="news-table-click" value="comment">댓글수</th>
-                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th value="comment">댓글수</th>
+                    <th value="reading">소요시간(초)</th>
                     <th>제목</th>
-                    <th>키워드</th>
                 </tr>
             </thead>
             <tbody>
@@ -90,10 +93,15 @@
                     {%endif%}
                     <td>{{news.reading}}</td>
                     <td class="news-table-align" id="newsTitle"
-                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
-                        {{news.title}}
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                        <div>
+                            {%for keyword in news.new_keywords%}
+                                <span class="news-keywords">#{{keyword}}</span>
+                            {%endfor%}
+                            </div>
+                            <div>{{news.title}}</div>
                     </td>
-                    <td class="news-table-align">{{news.keywords}}</td>
                 </tr>
                 {%endfor%}
                 {%else%}
@@ -115,12 +123,11 @@
         <table id="newsTable" class="section-table-container">
             <thead class="section-table-head" style="text-align: center;">
                 <tr>
-                    <th class="news-table-click" value="date">날짜</th>
+                    <th value="date">날짜</th>
                     <th>언론사</th>
-                    <th class="news-table-click" value="comment">댓글수</th>
-                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th value="comment">댓글수</th>
+                    <th value="reading">소요시간(초)</th>
                     <th>제목</th>
-                    <th>키워드</th>
                 </tr>
             </thead>
             <tbody>
@@ -140,10 +147,15 @@
                     {%endif%}
                     <td>{{news.reading}}</td>
                     <td class="news-table-align" id="newsTitle"
-                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
-                        {{news.title}}
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                        <div>
+                            {%for keyword in news.new_keywords%}
+                                <span class="news-keywords">#{{keyword}}</span>
+                            {%endfor%}
+                            </div>
+                            <div>{{news.title}}</div>
                     </td>
-                    <td class="news-table-align">{{news.keywords}}</td>
                 </tr>
                 {%endfor%}
                 {%else%}
@@ -165,12 +177,11 @@
         <table id="newsTable" class="section-table-container">
             <thead class="section-table-head" style="text-align: center;">
                 <tr>
-                    <th class="news-table-click" value="date">날짜</th>
+                    <th value="date">날짜</th>
                     <th>언론사</th>
-                    <th class="news-table-click" value="comment">댓글수</th>
-                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th value="comment">댓글수</th>
+                    <th value="reading">소요시간(초)</th>
                     <th>제목</th>
-                    <th>키워드</th>
                 </tr>
             </thead>
             <tbody>
@@ -190,10 +201,15 @@
                     {%endif%}
                     <td>{{news.reading}}</td>
                     <td class="news-table-align" id="newsTitle"
-                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
-                        {{news.title}}
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                        <div>
+                            {%for keyword in news.new_keywords%}
+                                <span class="news-keywords">#{{keyword}}</span>
+                            {%endfor%}
+                            </div>
+                            <div>{{news.title}}</div>
                     </td>
-                    <td class="news-table-align">{{news.keywords}}</td>
                 </tr>
                 {%endfor%}
                 {%else%}
@@ -215,12 +231,11 @@
         <table id="newsTable" class="section-table-container">
             <thead class="section-table-head" style="text-align: center;">
                 <tr>
-                    <th class="news-table-click" value="date">날짜</th>
+                    <th value="date">날짜</th>
                     <th>언론사</th>
-                    <th class="news-table-click" value="comment">댓글수</th>
-                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th value="comment">댓글수</th>
+                    <th value="reading">소요시간(초)</th>
                     <th>제목</th>
-                    <th>키워드</th>
                 </tr>
             </thead>
             <tbody>
@@ -240,10 +255,15 @@
                     {%endif%}
                     <td>{{news.reading}}</td>
                     <td class="news-table-align" id="newsTitle"
-                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
-                        {{news.title}}
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                        <div>
+                            {%for keyword in news.new_keywords%}
+                                <span class="news-keywords">#{{keyword}}</span>
+                            {%endfor%}
+                            </div>
+                            <div>{{news.title}}</div>
                     </td>
-                    <td class="news-table-align">{{news.keywords}}</td>
 
                 </tr>
                 {%endfor%}
@@ -266,12 +286,11 @@
         <table id="newsTable" class="section-table-container">
             <thead class="section-table-head" style="text-align: center;">
                 <tr>
-                    <th class="news-table-click" value="date">날짜</th>
+                    <th value="date">날짜</th>
                     <th>언론사</th>
-                    <th class="news-table-click" value="comment">댓글수</th>
-                    <th class="news-table-click" value="reading">소요시간(분)</th>
+                    <th value="comment">댓글수</th>
+                    <th value="reading">소요시간(초)</th>
                     <th>제목</th>
-                    <th>키워드</th>
                 </tr>
             </thead>
             <tbody>
@@ -291,10 +310,15 @@
                     {%endif%}
                     <td>{{news.reading}}</td>
                     <td class="news-table-align" id="newsTitle"
-                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}">
-                        {{news.title}}
+                        onclick="window.open(this.getAttribute('value'),'_blank');" value="{{news.link}}" style="text-overflow: ellipsis;
+                        overflow: hidden;">
+                        <div>
+                            {%for keyword in news.new_keywords%}
+                                <span class="news-keywords">#{{keyword}}</span>
+                            {%endfor%}
+                            </div>
+                            <div>{{news.title}}</div>
                     </td>
-                    <td class="news-table-align">{{news.keywords}}</td>
                 </tr>
                 {%endfor%}
                 {%else%}

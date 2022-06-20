@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from summ.models import *
 import csv_to_db
 from django.db.models import Q
-
+import math
 
 def total(request):
    """
@@ -43,26 +43,44 @@ def keyword(request):
 def article(request):
     sort=request.GET.get('sort','comment')#페이지
     order='-'+sort
-    news_list=Total_News.objects.order_by(order)[:10]
-    context={'news_list':news_list}
+    news_list=Two_News.objects.order_by(order)[:10]
+    for i in news_list:
+        i.new_keywords=i.keywords.split(',')
+    keyword_list=list(Two_keyword.objects.values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
+    context={
+        'news_list':news_list,
+        'keyword_list':keyword_list
+    }
+
     return render(request,'summ/level_two.html',context)
 # lod 레벨 3
 def section_three(request):
     sort=request.GET.get('sort','comment')#페이지
 
-    world_list=Total_News.objects.filter(section="세계")[:3]
-    science_list=Total_News.objects.filter(section="IT")[:3]
-    economy_list=Total_News.objects.filter(section="경제")[:3]
-    politic_list=Total_News.objects.filter(section="정치")[:3]
-    society_list=Total_News.objects.filter(section="사회")[:3]
-    life_list=Total_News.objects.filter(section="생활")[:3]
-
-    world_keyword_list=list(Total_keyword.objects.filter(section_name="세계").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
-    science_keyword_list=list(Total_keyword.objects.filter(section_name="IT").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
-    economy_keyword_list=list(Total_keyword.objects.filter(section_name="경제").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
-    politic_keyword_list=list(Total_keyword.objects.filter(section_name="정치").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
-    society_keyword_list=list(Total_keyword.objects.filter(section_name="사회").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
-    life_keyword_list=list(Total_keyword.objects.filter(section_name="생활").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
+    world_list=Three_News.objects.filter(section="세계").annotate(keyword_count=Sum('three_key__score')).order_by('-keyword_count')[:3]
+    for i in world_list:
+        i.new_keywords=i.keywords.split(',')
+    science_list=Three_News.objects.filter(section="IT").annotate(keyword_count=Sum('three_key__score')).order_by('-keyword_count')[:3]
+    for i in science_list:
+        i.new_keywords=i.keywords.split(',')
+    economy_list=Three_News.objects.filter(section="경제").annotate(keyword_count=Sum('three_key__score')).order_by('-keyword_count')[:3]
+    for i in economy_list:
+        i.new_keywords=i.keywords.split(',')
+    politic_list=Three_News.objects.filter(section="정치").annotate(keyword_count=Sum('three_key__score')).order_by('-keyword_count')[:3]
+    for i in politic_list:
+        i.new_keywords=i.keywords.split(',')
+    society_list=Three_News.objects.filter(section="사회").annotate(keyword_count=Sum('three_key__score')).order_by('-keyword_count')[:3]
+    for i in society_list:
+        i.new_keywords=i.keywords.split(',')
+    life_list=Three_News.objects.filter(section="생활").annotate(keyword_count=Sum('three_key__score')).order_by('-keyword_count')[:3]
+    for i in life_list:
+        i.new_keywords=i.keywords.split(',')
+    world_keyword_list=list(Three_keyword.objects.filter(section_name="세계").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
+    science_keyword_list=list(Three_keyword.objects.filter(section_name="IT").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
+    economy_keyword_list=list(Three_keyword.objects.filter(section_name="경제").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
+    politic_keyword_list=list(Three_keyword.objects.filter(section_name="정치").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
+    society_keyword_list=list(Three_keyword.objects.filter(section_name="사회").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
+    life_keyword_list=list(Three_keyword.objects.filter(section_name="생활").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:3])
     
     context={
         'science_list':science_list,
@@ -88,14 +106,26 @@ def section_three(request):
 # lod 레벨 4
 def section_four(request):
     sort=request.GET.get('sort','comment')#페이지
-
-    world_list=Total_News.objects.filter(section="세계")[:5]
-    science_list=Total_News.objects.filter(section="IT")[:5]
-    economy_list=Total_News.objects.filter(section="경제")[:5]
-    politic_list=Total_News.objects.filter(section="정치")[:5]
-    society_list=Total_News.objects.filter(section="사회")[:5]
-    life_list=Total_News.objects.filter(section="생활")[:5]
-
+    user=request.GET.get('user','30')
+    slice=math.floor(int(user)/6)
+    world_list=Total_News.objects.filter(section="세계").annotate(keyword_count=Sum('total_key__score')).order_by('-keyword_count')[:slice]
+    for i in world_list:
+        i.new_keywords=i.keywords.split(',')
+    science_list=Total_News.objects.filter(section="IT").annotate(keyword_count=Sum('total_key__score')).order_by('-keyword_count')[:slice]
+    for i in science_list:
+        i.new_keywords=i.keywords.split(',')
+    economy_list=Total_News.objects.filter(section="경제").annotate(keyword_count=Sum('total_key__score')).order_by('-keyword_count')[:slice]
+    for i in economy_list:
+        i.new_keywords=i.keywords.split(',')
+    politic_list=Total_News.objects.filter(section="정치").annotate(keyword_count=Sum('total_key__score')).order_by('-keyword_count')[:slice]
+    for i in politic_list:
+        i.new_keywords=i.keywords.split(',')
+    society_list=Total_News.objects.filter(section="사회").annotate(keyword_count=Sum('total_key__score')).order_by('-keyword_count')[:slice]
+    for i in society_list:
+        i.new_keywords=i.keywords.split(',')
+    life_list=Total_News.objects.filter(section="생활").annotate(keyword_count=Sum('total_key__score')).order_by('-keyword_count')[:slice]
+    for i in life_list:
+        i.new_keywords=i.keywords.split(',')
     world_keyword_list=list(Total_keyword.objects.filter(section_name="세계").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:5])
     science_keyword_list=list(Total_keyword.objects.filter(section_name="IT").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:5])
     economy_keyword_list=list(Total_keyword.objects.filter(section_name="경제").values('keyword').annotate(keyword_count=Sum('score')).order_by('-keyword_count').distinct()[:5])

@@ -4,7 +4,7 @@ body{
     font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
 }
 td{
-    text-overflow: ellipsis;
+    table-layout: fixed;
 }
 /*nav*/
 .header{
@@ -174,7 +174,7 @@ td{
     color: #3676ec;
 }
 .news-table-container>tbody>tr{
-    height: 2em;
+    padding-bottom: 1em;
 }
 .news-table-container>tbody>tr>td{
     padding:0 1em;
@@ -207,7 +207,7 @@ td{
     height: 2em;
 }
 .section-table-container>tbody>tr>td{
-    padding:0 1em;
+    padding:0.5em 1em;
 }
 .section-table-head{
     background-color: rgba(54, 118, 236,0.05);
@@ -230,4 +230,13 @@ td{
     background-color: rgb(253, 225, 100);
     box-shadow: 0 1px 1px rgba(0,0,0,0.11);
     border-radius: 1em;
+}
+
+
+.news-keywords{
+    flex:0 0 auto;
+    color: rgb(6 180 192);
+    padding:0.4em 0.1em 0.2em 0.1em;
+    margin:0 0.2em 0.3em 0;
+    
 }
